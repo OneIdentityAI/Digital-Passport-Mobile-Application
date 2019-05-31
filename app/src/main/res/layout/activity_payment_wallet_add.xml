@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal" >
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="140dip"
+        android:layout_height="140dip"
+        android:layout_alignParentRight="true"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/ic_welcome_bg_top"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:orientation="vertical">
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image_back"
+                    android:layout_width="40dip"
+                    android:layout_height="30dip"
+                    android:layout_marginLeft="4dip"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/back"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="10dip"
+                    android:lineSpacingExtra="6dip"
+                    android:text="@string/add_payment_wallet"
+                    android:textSize="30sp"
+                    android:textColor="#717171"
+                    app:fontFamily="sans-serif-medium"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:orientation="horizontal">
+                        <Space
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.125"/>
+                        <LinearLayout
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.75"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dip"
+                                android:text="@string/wallet_address"
+                                android:textSize="14sp"
+                                android:textColor="#a0a7ff"
+                                app:fontFamily="sans-serif"/>
+
+                            <EditText
+                                android:id="@+id/input_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dip"
+                                android:inputType="text"
+                                android:imeOptions="actionNext"
+                                android:hint=""
+                                android:text=""
+                                android:textSize="15sp"
+                                android:textColor="@color/colorInput"
+                                app:fontFamily="sans-serif"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dip"
+                                android:text="@string/wallet_currency"
+                                android:textSize="14sp"
+                                android:textColor="#a0a7ff"
+                                app:fontFamily="sans-serif"/>
+
+                            <EditText
+                                android:id="@+id/input_currency"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dip"
+                                android:inputType="text"
+                                android:imeOptions="actionDone"
+                                android:hint=""
+                                android:text=""
+                                android:textSize="15sp"
+                                android:textColor="@color/colorInput"
+                                app:fontFamily="sans-serif"/>
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dip"/>
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:id="@+id/image_save"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scaleType="fitCenter"
+                                android:adjustViewBounds="true"
+                                app:srcCompat="@drawable/save"/>
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dip"/>
+                        </LinearLayout>
+                        <Space
+                            android:layout_width="0dip"
+                            android:layout_height="10dip"
+                            android:layout_weight="0.125"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dip"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>
