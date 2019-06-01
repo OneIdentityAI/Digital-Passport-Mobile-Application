@@ -296,7 +296,7 @@ public class BuildYourProfileActivity extends AppCompatActivity {
         }
 
         Log.e("Json", jsonObject.toString());
-        AsynRestClient.genericPost(this, AsynRestClient.createOneIdentityUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
+        AsynRestClient.genericPost(this, AsynRestClient.identityVerificationUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 progressDialog.show();;

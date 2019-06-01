@@ -17,7 +17,7 @@ public class AsynRestClient {
     public static String serverUrl = "https://api.1id.ai/v2/";
     public static String viewIdentityWalletUrl = serverUrl + "view-identity-wallet";
     public static String createIdentityWalletUrl = serverUrl + "create-identity-wallet";
-    public static String createOneIdentityUrl = serverUrl + "create-one-identity";
+    public static String identityVerificationUrl = serverUrl + "identity-verification";
     public static String listPaymentWalletUrl = serverUrl + "list-payment-wallet";
     public static String addPaymentWalletUrl = serverUrl + "add-payment-wallet";
     public static String deletePaymentWalletUrl = serverUrl + "delete-payment-wallet";
