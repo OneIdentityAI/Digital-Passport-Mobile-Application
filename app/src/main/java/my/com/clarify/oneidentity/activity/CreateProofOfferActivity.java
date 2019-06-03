@@ -198,8 +198,8 @@ public class CreateProofOfferActivity extends AppCompatActivity {
                     try
                     {
                         JSONObject data2 = new JSONObject(data);
-                        JSONObject proofReq = data2.getJSONObject("message").getJSONObject("proof_req");
-                        JSONArray mapping = data2.getJSONObject("message").getJSONArray("mapping");
+                        JSONObject proofReq = data2.getJSONObject("proof_request");
+                        JSONArray mapping = data2.getJSONArray("mapping");
                         JSONObject jsonAttributesObject = proofReq.getJSONObject("requested_attributes");
                         for(int i = 0; i < 1000; i++)
                         {
@@ -280,7 +280,7 @@ public class CreateProofOfferActivity extends AppCompatActivity {
             }
 
             JSONObject jsonProofObject = new JSONObject(data);
-            JSONObject messageObject = jsonProofObject.getJSONObject("message").getJSONObject("proof_req");
+            JSONObject messageObject = jsonProofObject.getJSONObject("proof_request");
             JSONObject requestAttributesObject = messageObject.getJSONObject("requested_attributes");
             JSONObject newAttributesObject = new JSONObject();
             for(int i = 0; i < 1000; i++)

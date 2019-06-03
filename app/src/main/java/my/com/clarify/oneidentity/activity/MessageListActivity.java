@@ -225,7 +225,6 @@ public class MessageListActivity extends AppCompatActivity {
         }
         else if(typeList.get(position).equals("MSG_TYPE_CREDENTIAL_ACCEPT_REQUEST"))
         {
-            actionList.add("Receive Credential");
             actionList.add("Detail");
             actionList.add("Delete");
         }
@@ -267,13 +266,13 @@ public class MessageListActivity extends AppCompatActivity {
                             nameList.add("Message Type");
                             valueList.add("New Connection Request");
                             nameList.add("DID");
-                            valueList.add(jsonObject.getJSONObject("message").getString("did"));
+                            valueList.add(jsonObject.getString("did"));
                             nameList.add("Endpoint DID");
-                            valueList.add(jsonObject.getJSONObject("message").getString("endpoint_did"));
+                            valueList.add(jsonObject.getString("endpoint_did"));
                             nameList.add("Endpoint Verkey");
-                            valueList.add(jsonObject.getJSONObject("message").getString("endpoint_verkey"));
+                            valueList.add(jsonObject.getString("endpoint_verkey"));
                             nameList.add("Message Nonce");
-                            valueList.add(jsonObject.getJSONObject("message").getString("nonce"));
+                            valueList.add(jsonObject.getString("nonce"));
                             nameList.add("Datetime");
                             valueList.add(createdList.get(position));
 
@@ -399,19 +398,19 @@ public class MessageListActivity extends AppCompatActivity {
                                 valueList.add(senderDid);
                             }
                             nameList.add("Schema Id");
-                            valueList.add(jsonObject.getJSONObject("message").getString("schema_id"));
+                            valueList.add(jsonObject.getString("schema_id"));
                             nameList.add("Schema Name");
-                            valueList.add(jsonObject.getJSONObject("message").getString("schema_id").split(":")[2]);
+                            valueList.add(jsonObject.getString("schema_id").split(":")[2]);
                             nameList.add("Schema Version");
-                            valueList.add(jsonObject.getJSONObject("message").getString("schema_id").split(":")[3]);
+                            valueList.add(jsonObject.getString("schema_id").split(":")[3]);
                             nameList.add("Cred Def Id");
-                            valueList.add(jsonObject.getJSONObject("message").getString("cred_def_id"));
+                            valueList.add(jsonObject.getString("cred_def_id"));
 
 
-                            for(int i = 0; i< jsonObject.getJSONObject("message").getJSONArray("attributes").length(); i++)
+                            for(int i = 0; i< jsonObject.getJSONArray("attributes").length(); i++)
                             {
                                 nameList.add("Attribute");
-                                valueList.add(jsonObject.getJSONObject("message").getJSONArray("attributes").getString(i));
+                                valueList.add(jsonObject.getJSONArray("attributes").getString(i));
                             }
 
                             nameList.add("Datetime");
@@ -460,8 +459,8 @@ public class MessageListActivity extends AppCompatActivity {
                                 nameList.add("Sender DID");
                                 valueList.add(senderDid);
                             }
-                            JSONObject proofReq = jsonObject.getJSONObject("message").getJSONObject("proof_req");
-                            JSONArray mapping = jsonObject.getJSONObject("message").getJSONArray("mapping");
+                            JSONObject proofReq = jsonObject.getJSONObject("proof_request");
+                            JSONArray mapping = jsonObject.getJSONArray("mapping");
                             nameList.add("Proof Request Nonce");
                             valueList.add(proofReq.getString("nonce"));
                             nameList.add("Proof Request Name");
@@ -542,7 +541,7 @@ public class MessageListActivity extends AppCompatActivity {
                                 nameList.add("Sender DID");
                                 valueList.add(senderDid);
                             }
-                            JSONObject proofReq = jsonObject.getJSONObject("message").getJSONObject("proof_request");
+                            JSONObject proofReq = jsonObject.getJSONObject("proof_request");
                             nameList.add("Proof Request Nonce");
                             valueList.add(proofReq.getString("nonce"));
                             nameList.add("Proof Request Name");
@@ -550,7 +549,7 @@ public class MessageListActivity extends AppCompatActivity {
                             nameList.add("Proof Request Version");
                             valueList.add(proofReq.getString("version"));
 
-                            JSONArray proofOffer = jsonObject.getJSONObject("message").getJSONArray("proof_offer");
+                            JSONArray proofOffer = jsonObject.getJSONArray("proof_offer");
                             for(int i = 0; i < proofOffer.length(); i++)
                             {
                                 JSONObject innerObject = proofOffer.getJSONObject(i);
@@ -608,9 +607,9 @@ public class MessageListActivity extends AppCompatActivity {
                                 nameList.add("Sender DID");
                                 valueList.add(senderDid);
                             }
-                            String schemaId = jsonObject.getJSONObject("message").getString("schema_id");
-                            String credDefId = jsonObject.getJSONObject("message").getString("cred_def_id");
-                            JSONObject values = jsonObject.getJSONObject("message").getJSONObject("values");
+                            String schemaId = jsonObject.getString("schema_id");
+                            String credDefId = jsonObject.getString("cred_def_id");
+                            JSONObject values = jsonObject.getJSONObject("values");
                             nameList.add("Schema Name");
                             valueList.add(schemaId.split(":")[2]);
                             nameList.add("Schema Version");
@@ -647,7 +646,7 @@ public class MessageListActivity extends AppCompatActivity {
                 }
                 else if(actionList.get(which).equals("Receive Credential"))
                 {
-                    alert("Message Detail", AppDelegate.formatString(messageList.get(position)));
+
                 }
                 else if(actionList.get(which).equals("Reply"))
                 {
@@ -675,7 +674,7 @@ public class MessageListActivity extends AppCompatActivity {
                             builder.setPositiveButton("Send", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    sendMessage(myDIDList.get(actualIndex), input.getText().toString());
+                                    sendMessage(theirDIDList.get(actualIndex), input.getText().toString());
                                 }
                             });
                             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -698,13 +697,13 @@ public class MessageListActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private void sendMessage(String senderDid, String message)
+    private void sendMessage(String recipientDid, String message)
     {
         SharedPreferences preferences = getSharedPreferences(AppDelegate.SharedPreferencesTag, Context.MODE_PRIVATE);
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("token", preferences.getString(getString(R.string.param_token), ""));
-            jsonObject.put("sender_did", senderDid);
+            jsonObject.put("recipient_did", recipientDid);
             jsonObject.put("message_content", message);
         }
         catch (Exception e)
@@ -1098,6 +1097,63 @@ public class MessageListActivity extends AppCompatActivity {
                 alert(getString(R.string.error), getString(R.string.error_please_try_again));
                 Log.e("Helo", "Hello");
                 isCalled = false;
+            }
+        });
+    }
+
+
+    public void receiveCredential(String messageId, String senderDid)
+    {
+        SharedPreferences preferences = getSharedPreferences(AppDelegate.SharedPreferencesTag, Context.MODE_PRIVATE);
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("token", preferences.getString(getString(R.string.param_token), ""));
+            jsonObject.put("sender_did", senderDid);
+            jsonObject.put("message_id", messageId);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        AsynRestClient.genericPost(this, AsynRestClient.receiveCredentialUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
+            @Override
+            public void onStart() {
+                progressDialog.show();;
+            }
+
+            @Override
+            public void onFinish() {
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String responseString = new String(responseBody);
+                Log.e("Response", responseString);
+                try {
+                    JSONObject jsonObject = new JSONObject(responseString);
+                    if(jsonObject.has("error"))
+                    {
+                        JSONObject errorObject = jsonObject.getJSONObject("error");
+                        alert(errorObject.getString("type"), errorObject.getString("message"));
+                        return;
+                    }
+
+                    alert(getString(R.string.success), jsonObject.getString("message"));
+                    retrieveData();
+                }
+                catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+                // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+                alert(getString(R.string.error), getString(R.string.error_please_try_again));
+                Log.e("Helo", "Hello");
             }
         });
     }

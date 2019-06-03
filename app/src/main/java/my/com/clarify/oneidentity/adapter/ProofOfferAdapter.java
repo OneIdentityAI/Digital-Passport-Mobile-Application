@@ -40,8 +40,8 @@ public class ProofOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         try {
             JSONObject data = new JSONObject(activity.proofOfferList.get(index).get(position));
-            JSONObject proofReq = data.getJSONObject("message").getJSONObject("proof_request");
-            JSONArray proofOffer = data.getJSONObject("message").getJSONArray("proof_offer");
+            JSONObject proofReq = data.getJSONObject("proof_request");
+            JSONArray proofOffer = data.getJSONArray("proof_offer");
             viewHolder.textName.setText(proofReq.getString("name") + "    ver: " + proofReq.getString("version"));
             String finalValue = "";
             for(int i = 0; i< proofOffer.length(); i++)

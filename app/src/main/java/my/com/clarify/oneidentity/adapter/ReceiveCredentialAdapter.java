@@ -43,19 +43,18 @@ public class ReceiveCredentialAdapter extends RecyclerView.Adapter<RecyclerView.
         try {
             JSONObject data = new JSONObject(activity.receiveCredentialList.get(index).get(position));
             String senderDid = data.getString("sender_did");
-            JSONObject messageInner = data.getJSONObject("message");
-            String schemaId = messageInner.getString("schema_id");
-            String credDefId = messageInner.getString("cred_def_id");
+            String schemaId = data.getString("schema_id");
+            String credDefId = data.getString("cred_def_id");
 
 
 
             viewHolder.textTitle.setText(schemaId.split(":")[2] + "    ver: " + schemaId.split(":")[3]);
             String finalValue = "";
-            Iterator<String> iter = messageInner.getJSONObject("values").keys();
+            Iterator<String> iter = data.getJSONObject("values").keys();
             while (iter.hasNext()) {
                 String key = iter.next();
                 try {
-                    String value = messageInner.getJSONObject("values").getJSONObject(key).getString("raw");
+                    String value = data.getJSONObject("values").getJSONObject(key).getString("raw");
                     finalValue += "Attribute: " + key;
                         finalValue += "\n";
                     finalValue += "Value: " + value + "\n\n";

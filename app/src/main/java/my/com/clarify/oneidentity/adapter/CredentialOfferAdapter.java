@@ -40,16 +40,15 @@ public class CredentialOfferAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         try {
             JSONObject data = new JSONObject(activity.credentialOfferList.get(index).get(position));
             String senderDid = data.getString("sender_did");
-            JSONObject messageInner = data.getJSONObject("message");
-            String schemaId = messageInner.getString("schema_id");
-            String credDefId = messageInner.getString("cred_def_id");
+            String schemaId = data.getString("schema_id");
+            String credDefId = data.getString("cred_def_id");
             String schemaIdArray[] = schemaId.split(":");
             viewHolder.textTitle.setText(schemaIdArray[2] + " Version: " + schemaIdArray[3]);
             String subtitle = "Attributes:\n";
-            for(int i = 0; i < messageInner.getJSONArray("attributes").length(); i++) {
+            for(int i = 0; i < data.getJSONArray("attributes").length(); i++) {
                 if(i > 0)
                     subtitle += ", ";
-                subtitle += messageInner.getJSONArray("attributes").getString(i);
+                subtitle += data.getJSONArray("attributes").getString(i);
             }
             viewHolder.textSubtitle.setText(subtitle);
             viewHolder.layout.setOnClickListener(new View.OnClickListener() {

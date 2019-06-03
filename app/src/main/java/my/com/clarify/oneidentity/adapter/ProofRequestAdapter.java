@@ -42,9 +42,9 @@ public class ProofRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         try {
 
             JSONObject data = new JSONObject(activity.proofRequestList.get(index).get(position));
-            JSONObject proofReq = data.getJSONObject("message").getJSONObject("proof_req");
+            JSONObject proofReq = data.getJSONObject("proof_request");
             viewHolder.textName.setText(proofReq.getString("name") + "    ver: " + proofReq.getString("version"));
-            JSONArray mapping = data.getJSONObject("message").getJSONArray("mapping");
+            JSONArray mapping = data.getJSONArray("mapping");
             JSONObject jsonAttributesObject = proofReq.getJSONObject("requested_attributes");
             String attributesString = "";
             for(int i = 0; i < 1000; i++)

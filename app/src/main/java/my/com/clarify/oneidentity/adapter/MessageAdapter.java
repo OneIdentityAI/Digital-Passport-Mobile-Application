@@ -239,7 +239,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
         else if(activity.typeList.get(position).equals("MSG_TYPE_CREDENTIAL_ACCEPT_REQUEST"))
         {
-            viewHolder.textAction.setText("Tap to Receive Credential / View Detail / Delete");
+            viewHolder.textAction.setText("View Detail / Delete\n(Receive Credential must be done from connection page)");
             try {
                 JSONObject jsonObject = new JSONObject(activity.messageList.get(position));
                 String senderDid = jsonObject.getString("sender_did");
