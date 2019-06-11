@@ -90,6 +90,7 @@ public class ProfileSelfieActivity extends AppCompatActivity {
         //AutoPermissions.Companion.parsePermissions(this, requestCode, permissions, listener);
     }
 
+    public boolean isCalled = false;
     @Override
     public void onResume()
     {
@@ -98,11 +99,16 @@ public class ProfileSelfieActivity extends AppCompatActivity {
         final SharedPreferences preferences = getSharedPreferences(AppDelegate.SharedPreferencesTag, Context.MODE_PRIVATE);
         final String selfie = preferences.getString(getResources().getString(R.string.param_selfie), "");
         if(!selfie.equals("")) {
+
+            if(isCalled)
+                return;
+
+            isCalled = true;
             viewUpload(selfie);
         }
 
         if(preferences.getBoolean(getString(R.string.param_identity_credential_status), false)) {
-            buttonAutomaticVerification.setVisibility(View.GONE);
+            //buttonAutomaticVerification.setVisibility(View.GONE);
         }
     }
 
@@ -167,13 +173,14 @@ public class ProfileSelfieActivity extends AppCompatActivity {
                 {
                     e.printStackTrace();
                 }
+                isCalled = false;
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
                 // called when response HTTP status is "4XX" (eg. 401, 403, 404)
                 //alert(getString(R.string.error), getString(R.string.error_please_try_again));
-                Log.e("Helo", "Hello");
+                isCalled = false;
             }
         });
     }

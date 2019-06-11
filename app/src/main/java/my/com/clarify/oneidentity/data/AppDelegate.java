@@ -15,6 +15,7 @@ import android.support.multidex.MultiDexApplication;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
+import com.devs.acr.AutoErrorReporter;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.json.JSONObject;
@@ -48,6 +49,10 @@ public class AppDelegate extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        AutoErrorReporter.get(this)
+                .setEmailAddresses("hochankit@gmail.com")
+                .setEmailSubject(getString(R.string.app_name) + " - Crash Report")
+                .start();
     }
 
     public void createDirectoryIfNotExist(String directoryPath) {
