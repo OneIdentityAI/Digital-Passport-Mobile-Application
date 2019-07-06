@@ -80,7 +80,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dip"
-                                    android:text="@string/passport"
+                                    android:text="@string/passport_id_license"
                                     android:textSize="16sp"
                                     android:textColor="#a0a7ff"
                                     app:fontFamily="sans-serif"/>
@@ -90,7 +90,30 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="20dip"
-                                android:text="@string/passport_no"
+                                android:text="@string/choose_id_type"
+                                android:textSize="14sp"
+                                android:textColor="#a0a7ff"
+                                app:fontFamily="sans-serif"/>
+
+                            <EditText
+                                android:id="@+id/input_id_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dip"
+                                android:inputType="text"
+                                android:focusable="false"
+                                android:imeOptions="actionNext"
+                                android:hint=""
+                                android:text=""
+                                android:textSize="15sp"
+                                android:textColor="@color/colorInput"
+                                app:fontFamily="sans-serif"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dip"
+                                android:text="@string/passport_no_id_no_license_no"
                                 android:textSize="14sp"
                                 android:textColor="#a0a7ff"
                                 app:fontFamily="sans-serif"/>
@@ -112,7 +135,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dip"
-                                android:text="@string/passport_image_message"
+                                android:text="@string/passport_id_license_image_message"
                                 android:textSize="15sp"
                                 android:textColor="#979797"
                                 app:fontFamily="sans-serif"/>

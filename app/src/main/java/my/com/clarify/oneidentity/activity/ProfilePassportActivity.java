@@ -38,6 +38,7 @@ public class ProfilePassportActivity extends AppCompatActivity {
     public AppCompatImageView imageUpload;
     public AppCompatImageView imageSave;
     public EditText inputPassportNo;
+    public EditText inputIdType;
 
     public Uri uri;
     public String imageName = "";
@@ -63,6 +64,33 @@ public class ProfilePassportActivity extends AppCompatActivity {
         final SharedPreferences preferences = getSharedPreferences(AppDelegate.SharedPreferencesTag, Context.MODE_PRIVATE);
         final String passport = preferences.getString(getResources().getString(R.string.param_passport), "");
         final String passportNo = preferences.getString(getResources().getString(R.string.param_passport_no), "");
+        final String idTypeName = preferences.getString(getResources().getString(R.string.param_id_type_name), "");
+
+        inputIdType = findViewById(R.id.input_id_type);
+        inputIdType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // setup the alert builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfilePassportActivity.this);
+                builder.setTitle(getString(R.string.choose_id_type));
+                final String[] dataId = getResources().getStringArray(R.array.id_type);
+                final String[] dataName = getResources().getStringArray(R.array.id_type_name);
+                builder.setItems(dataName, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        inputIdType.setText(dataName[which]);
+                        SharedPreferences preferences = getSharedPreferences(AppDelegate.SharedPreferencesTag, Context.MODE_PRIVATE);
+                        final SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString(getResources().getString(R.string.param_id_type), dataId[which]);
+                        editor.putString(getResources().getString(R.string.param_id_type_name), dataName[which]);
+                        editor.apply();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+        inputIdType.setText(idTypeName);
 
         inputPassportNo = findViewById(R.id.input_passport_no);
         inputPassportNo.setText(passportNo);
@@ -132,8 +160,9 @@ public class ProfilePassportActivity extends AppCompatActivity {
             }
         });
         if(preferences.getBoolean(getString(R.string.param_identity_credential_status), false)) {
-            inputPassportNo.setFocusable(false);
-            imageSave.setVisibility(View.GONE);
+            //inputIdType.setFocusable(false);
+            //inputPassportNo.setFocusable(false);
+            //imageSave.setVisibility(View.GONE);
         }
     }
 

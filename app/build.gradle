@@ -6,8 +6,8 @@ android {
         applicationId "my.com.clarify.oneidentity"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 4
-        versionName "1.0.2"
+        versionCode 5
+        versionName "1.0.3"
         vectorDrawables.useSupportLibrary true
         renderscriptTargetApi 16
         renderscriptSupportModeEnabled true

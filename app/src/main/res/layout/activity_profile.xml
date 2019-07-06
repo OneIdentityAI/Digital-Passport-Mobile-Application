@@ -305,7 +305,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/passport"
+                                    android:text="@string/passport_id_license"
                                     android:textSize="16sp"
                                     android:textColor="#a0a7ff"
                                     app:fontFamily="sans-serif"/>

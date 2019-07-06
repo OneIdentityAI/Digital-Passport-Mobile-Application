@@ -36,7 +36,7 @@ public class AppDelegate extends MultiDexApplication {
     public static String appPath = "/OneIdentity";
     public static String tempFolder = "/tempFolder";
     public static String apikey = "9c24abc8797a4554a54f3c6c26c705d9";
-    public static String credDefIdOneIdentity = "Th7MpTaRZVRYnPiabds81Y:3:CL:6:TAG1";
+    public static String credDefIdOneIdentity = "8CXxwinErn2oJiUt3XyKix:3:CL:182:TAG1";
 
     public AppDelegate() {
     }

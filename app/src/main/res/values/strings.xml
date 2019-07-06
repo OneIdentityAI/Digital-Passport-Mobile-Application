@@ -39,6 +39,8 @@
 
     <string name="param_passport_no">param_passport_no</string>
     <string name="param_passport">param_passport</string>
+    <string name="param_id_type">param_id_type</string>
+    <string name="param_id_type_name">param_id_type_name</string>
     <string name="param_selfie">param_selfie</string>
     <string name="param_address_image">param_address_image</string>
     <string name="secret_answer">Secret Answer</string>
@@ -103,6 +105,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="dob">"Date of Birth</string>
     <string name="passport">Passport</string>
+    <string name="passport_id_license">Passport / Identity Card / Driving License</string>
     <string name="selfie">Selfie</string>
     <string name="proof">Proof</string>
     <string name="wallet">Wallet</string>
@@ -118,13 +121,16 @@
     <string name="last_name_message">What is your family name?</string>
     <string name="last_name_hint">What is your family name?</string>
     <string name="nationality">Nationality</string>
+    <string name="choose_id_type">Choose your id type</string>
     <string name="job_title">Job Title</string>
     <string name="job_title_message">What is your current job title</string>
     <string name="company_name">Company name</string>
     <string name="company_name_message">What is your current company name</string>
     <string name="email_question">What is your email?</string>
     <string name="passport_no">Passport No</string>
-    <string name="passport_image_message">"Upload a clear and legible picture of your  passport front page</string>
+    <string name="passport_no_id_no_license_no">Passport / Identity Card / Driving License No</string>
+    <string name="passport_image_message">"Upload a clear and legible picture of your passport front page</string>
+    <string name="passport_id_license_image_message">"Upload a clear and legible picture of your passport / identity card / driving license front page</string>
     <string name="upload_photo">Upload your photo</string>
     <string name="mobile_number_message">What is your mobile number?</string>
     <string name="telephone_number_message">What is your telephone number?</string>

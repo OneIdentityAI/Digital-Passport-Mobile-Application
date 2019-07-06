@@ -114,14 +114,7 @@ public class BuildYourProfileActivity extends AppCompatActivity {
                         }
                         else if(item.getTitle().toString().toLowerCase().equals("sign out"))
                         {
-                            final SharedPreferences.Editor editor = preferences.edit();
-                            editor.putBoolean(getResources().getString(R.string.param_account_status), true);
-                            editor.putString(getResources().getString(R.string.param_wallet_name), null);
-                            editor.putString(getResources().getString(R.string.param_wallet_id), null);
-                            editor.putString(getResources().getString(R.string.param_passphrase), null);
-                            editor.putString(getResources().getString(R.string.param_created_at), null);
-                            editor.putString(getResources().getString(R.string.param_endpoint_did), null);
-                            editor.apply();
+                            preferences.edit().clear().commit();
                             Intent i = new Intent(BuildYourProfileActivity.this, WelcomeActivity.class);
                             startActivity(i);
                             finish();
@@ -284,11 +277,12 @@ public class BuildYourProfileActivity extends AppCompatActivity {
             jsonObject.put("gender", preferences.getString(getString(R.string.param_gender), ""));
             jsonObject.put("dob", preferences.getString(getString(R.string.param_dob), ""));
             jsonObject.put("nationality", preferences.getString(getString(R.string.param_nationality_code), ""));
-            jsonObject.put("passport_no", preferences.getString(getString(R.string.param_passport_no), ""));
-            jsonObject.put("passport_image", preferences.getString(getString(R.string.param_passport), ""));
+            jsonObject.put("id_no", preferences.getString(getString(R.string.param_passport_no), ""));
+            jsonObject.put("id_image", preferences.getString(getString(R.string.param_passport), ""));
             jsonObject.put("proof_address_image", preferences.getString(getString(R.string.param_address_image), ""));
             jsonObject.put("selfie_image", preferences.getString(getString(R.string.param_selfie), ""));
             jsonObject.put("company_name", preferences.getString(getString(R.string.param_company_name), ""));
+            jsonObject.put("doc_type", preferences.getString(getString(R.string.param_id_type), ""));
         }
         catch (Exception e)
         {
@@ -317,6 +311,15 @@ public class BuildYourProfileActivity extends AppCompatActivity {
                     {
                         JSONObject errorObject = jsonObject.getJSONObject("error");
                         alert(errorObject.getString("type"), errorObject.getString("message"));
+                        return;
+                    }
+
+                    String status = jsonObject.getString("status");
+                    if(!status.equals("200"))
+                    {
+                        String type = jsonObject.getString("type");
+                        String message = jsonObject.getString("message");
+                        alert(type, message);
                         return;
                     }
                     imageCreateIdentity.setVisibility(View.GONE);
