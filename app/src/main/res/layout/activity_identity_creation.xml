@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="horizontal" >
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="140dip"
         android:layout_height="140dip"
         android:layout_alignParentRight="true"
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:orientation="vertical">
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/image_back"
                     android:layout_width="40dip"
                     android:layout_height="30dip"
@@ -229,7 +229,7 @@
                     android:layout_marginLeft="10dip"
                     android:layout_margin="10dip"
                     android:orientation="horizontal">
-                    <android.support.v7.widget.AppCompatCheckBox
+                    <androidx.appcompat.widget.AppCompatCheckBox
                         android:id="@+id/checkbox_got_it"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
@@ -240,7 +240,7 @@
                         android:textColor="#979797"
                         app:fontFamily="sans-serif"/>
 
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_save_and_continue"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"

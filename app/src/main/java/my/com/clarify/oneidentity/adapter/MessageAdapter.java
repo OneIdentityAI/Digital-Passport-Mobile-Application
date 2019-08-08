@@ -1,6 +1,6 @@
 package my.com.clarify.oneidentity.adapter;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +12,6 @@ import org.json.JSONObject;
 
 import my.com.clarify.oneidentity.R;
 import my.com.clarify.oneidentity.activity.MessageListActivity;
-import my.com.clarify.oneidentity.activity.PaymentWalletListActivity;
 
 public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {

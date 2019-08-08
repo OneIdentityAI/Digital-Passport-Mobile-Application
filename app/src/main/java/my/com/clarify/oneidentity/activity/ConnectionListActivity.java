@@ -8,11 +8,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
@@ -109,7 +109,7 @@ public class ConnectionListActivity extends AppCompatActivity {
 
         textNoData = findViewById(R.id.text_no_data);
         recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         adapter = new ConnectionAdapter(this);
         //recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
@@ -543,7 +543,7 @@ public class ConnectionListActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        AsynRestClient.genericPost(this, AsynRestClient.listProofUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
+        AsynRestClient.genericPost(ConnectionListActivity.this, AsynRestClient.listProofUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 progressDialog.show();;
@@ -586,8 +586,6 @@ public class ConnectionListActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
                 // called when response HTTP status is "4XX" (eg. 401, 403, 404)
                 alert(getString(R.string.error), getString(R.string.error_please_try_again));
-                String responseString = new String(errorResponse);
-                Log.e("Response", responseString);
                 isCalled = false;
             }
         });
@@ -610,7 +608,7 @@ public class ConnectionListActivity extends AppCompatActivity {
         window.setGravity(Gravity.CENTER);
 
         coRecyclerView = dialogCredentialOffer.findViewById(R.id.recycler_view);
-        coRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        coRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         coAdapter = new CredentialOfferAdapter(this, position);
         coRecyclerView.setAdapter(coAdapter);
         coAdapter.notifyDataSetChanged();
@@ -642,7 +640,7 @@ public class ConnectionListActivity extends AppCompatActivity {
         window.setGravity(Gravity.CENTER);
 
         rcRecyclerView = dialogReceiveCredential.findViewById(R.id.recycler_view);
-        rcRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rcRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         rcAdapter = new ReceiveCredentialAdapter(this, position);
         rcRecyclerView.setAdapter(rcAdapter);
         rcAdapter.notifyDataSetChanged();
@@ -674,7 +672,7 @@ public class ConnectionListActivity extends AppCompatActivity {
         window.setGravity(Gravity.CENTER);
 
         poRecyclerView = dialogProofOffer.findViewById(R.id.recycler_view);
-        poRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        poRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         poAdapter = new ProofOfferAdapter(this, position);
         poRecyclerView.setAdapter(poAdapter);
         poAdapter.notifyDataSetChanged();
@@ -706,7 +704,7 @@ public class ConnectionListActivity extends AppCompatActivity {
         window.setGravity(Gravity.CENTER);
 
         prRecyclerView = dialogProofRequest.findViewById(R.id.recycler_view);
-        prRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        prRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         prAdapter = new ProofRequestAdapter(this, position);
         prRecyclerView.setAdapter(prAdapter);
         prAdapter.notifyDataSetChanged();
@@ -783,7 +781,7 @@ public class ConnectionListActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        AsynRestClient.genericPost(this, AsynRestClient.acceptCredentialOfferUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
+        AsynRestClient.genericPost(ConnectionListActivity.this, AsynRestClient.acceptCredentialOfferUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 progressDialog.show();;
@@ -838,7 +836,7 @@ public class ConnectionListActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        AsynRestClient.genericPost(this, AsynRestClient.verifyAndAcceptProofOfferUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
+        AsynRestClient.genericPost(ConnectionListActivity.this, AsynRestClient.verifyAndAcceptProofOfferUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 progressDialog.show();;
@@ -893,7 +891,7 @@ public class ConnectionListActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        AsynRestClient.genericPost(this, AsynRestClient.receiveCredentialUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
+        AsynRestClient.genericPost(ConnectionListActivity.this, AsynRestClient.receiveCredentialUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 progressDialog.show();;

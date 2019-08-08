@@ -24,7 +24,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="end">
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="0dip"
                         android:layout_weight="0.25"
@@ -39,7 +39,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dip"
                         android:layout_weight="0.6">
-                        <android.support.v7.widget.AppCompatImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_centerInParent="true"
@@ -64,7 +64,7 @@
                                         android:layout_width="0dip"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="0.325"/>
-                                    <android.support.v7.widget.AppCompatImageView
+                                    <androidx.appcompat.widget.AppCompatImageView
                                         android:layout_width="0dip"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="0.35"
@@ -107,7 +107,7 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="20dip"/>
 
-                                            <android.support.v7.widget.AppCompatImageView
+                                            <androidx.appcompat.widget.AppCompatImageView
                                                 android:id="@+id/image_create_your_identity"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"

@@ -1,6 +1,6 @@
 package my.com.clarify.oneidentity.adapter;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import my.com.clarify.oneidentity.R;
-import my.com.clarify.oneidentity.activity.ConnectionListActivity;
 import my.com.clarify.oneidentity.activity.GenericDetailActivity;
-import my.com.clarify.oneidentity.data.AsynRestClient;
 
 public class GenericDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {

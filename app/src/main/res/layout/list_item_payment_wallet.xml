@@ -47,7 +47,7 @@
                 android:textColor="#B8B7B7"
                 app:fontFamily="sans-serif"/>
         </LinearLayout>
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="10dip"
             android:layout_height="wrap_content"
             android:scaleType="fitCenter"
@@ -55,7 +55,7 @@
             app:srcCompat="@drawable/next"/>
     </LinearLayout>
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"

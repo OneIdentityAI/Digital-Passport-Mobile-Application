@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="horizontal" >
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="140dip"
         android:layout_height="140dip"
         android:layout_alignParentRight="true"
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:orientation="vertical">
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/image_back"
                     android:layout_width="40dip"
                     android:layout_height="30dip"
@@ -70,7 +70,7 @@
                                 android:layout_marginTop="10dip"
                                 android:layout_marginBottom="10dip"
                                 android:orientation="horizontal">
-                                <android.support.v7.widget.AppCompatImageView
+                                <androidx.appcompat.widget.AppCompatImageView
                                     android:layout_width="24dip"
                                     android:layout_height="wrap_content"
                                     android:scaleType="fitCenter"
@@ -143,7 +143,7 @@
                             <Space
                                 android:layout_width="wrap_content"
                                 android:layout_height="20dip"/>
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitCenter"
@@ -156,7 +156,7 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
-                                <android.support.v7.widget.AppCompatImageView
+                                <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/image_upload"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -178,7 +178,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dip"/>
 
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/image_save"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

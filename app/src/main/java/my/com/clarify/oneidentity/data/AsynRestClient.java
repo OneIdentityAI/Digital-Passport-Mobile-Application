@@ -45,7 +45,7 @@ public class AsynRestClient {
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void genericPost(Context context, String url, String data, AsyncHttpResponseHandler responseHandler) {
-        client.setSSLSocketFactory(MySSLSocketFactory.getFixedSocketFactory());
+        //client.setSSLSocketFactory(MySSLSocketFactory.getFixedSocketFactory());
         client.setTimeout(timeOutMili);
         client.addHeader("Authorization", "Bearer " + AppDelegate.apikey);
         StringEntity entity = null;
@@ -58,7 +58,7 @@ public class AsynRestClient {
     }
 
     public static void upload(String token, String type, String imagePath, AsyncHttpResponseHandler responseHandler) {
-        client.setSSLSocketFactory(MySSLSocketFactory.getFixedSocketFactory());
+        //client.setSSLSocketFactory(MySSLSocketFactory.getFixedSocketFactory());
         client.setTimeout(timeOutMili);
         client.addHeader("Authorization", "Bearer " + AppDelegate.apikey);
         File myFile = new File(imagePath);

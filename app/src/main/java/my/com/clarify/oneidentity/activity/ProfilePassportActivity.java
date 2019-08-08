@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -263,7 +263,8 @@ public class ProfilePassportActivity extends AppCompatActivity {
     {
         SharedPreferences preferences = getSharedPreferences(AppDelegate.SharedPreferencesTag, Context.MODE_PRIVATE);
         String token = preferences.getString(getResources().getString(R.string.param_token), "");
-        AsynRestClient.upload(token, "passport", imagePath, new AsyncHttpResponseHandler()
+        String documentType = preferences.getString(getResources().getString(R.string.param_id_type), "");
+        AsynRestClient.upload(token, documentType, imagePath, new AsyncHttpResponseHandler()
         {
             @Override
             public void onStart() {

@@ -5,11 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -82,10 +82,9 @@ public class CreateProofOfferActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean isAnyEmpty = false;
 
-                for(int i=0;i< attributeNameList.size(); i++){
-                    View view= recyclerView.getChildAt(i);
-                    EditText editText = view.findViewById(R.id.input_value);
-                    String value = editText.getText().toString();
+                for(int i=0;i< attributeValueList.size(); i++){
+                    String value = attributeValueList.get(i);
+                    Log.e("Hello", value + "");
                     if(value.equals(""))
                     {
                         isAnyEmpty = true;
@@ -106,7 +105,7 @@ public class CreateProofOfferActivity extends AppCompatActivity {
 
         textNoData = findViewById(R.id.text_no_data);
         recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         adapter = new CreateProofOfferAdapter(this);
         //recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
@@ -272,10 +271,8 @@ public class CreateProofOfferActivity extends AppCompatActivity {
             jsonObject.put("sender_did", senderDid);
             jsonObject.put("message_id", messageId);
 
-            for(int i=0;i< attributeNameList.size(); i++){
-                View view= recyclerView.getChildAt(i);
-                EditText editText = view.findViewById(R.id.input_value);
-                String value = editText.getText().toString();
+            for(int i=0;i< attributeValueList.size(); i++){
+                String value = attributeValueList.get(i);
                 attributeValueList.set(i, value);
             }
 

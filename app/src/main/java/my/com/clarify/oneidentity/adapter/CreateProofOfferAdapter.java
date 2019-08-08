@@ -1,13 +1,10 @@
 package my.com.clarify.oneidentity.adapter;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.RecyclerView;
-import android.text.InputType;
-import android.util.Log;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,18 +12,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.loopj.android.http.AsyncHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import cz.msebera.android.httpclient.Header;
 import my.com.clarify.oneidentity.R;
 import my.com.clarify.oneidentity.activity.CreateProofOfferActivity;
-import my.com.clarify.oneidentity.activity.DIDListActivity;
-import my.com.clarify.oneidentity.data.AppDelegate;
-import my.com.clarify.oneidentity.data.AsynRestClient;
 
 public class CreateProofOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
@@ -58,6 +45,20 @@ public class CreateProofOfferAdapter extends RecyclerView.Adapter<RecyclerView.V
         else
         {
             viewHolder.inputValue.setEnabled(true);
+            viewHolder.inputValue.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    activity.attributeValueList.set(position, charSequence + "");
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                }
+            });
         }
         viewHolder.inputValue.setText(activity.attributeValueList.get(position));
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {

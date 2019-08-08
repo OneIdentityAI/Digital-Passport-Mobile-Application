@@ -1,13 +1,11 @@
 package my.com.clarify.oneidentity.adapter;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.google.android.gms.vision.text.Line;
 
 import my.com.clarify.oneidentity.R;
 import my.com.clarify.oneidentity.activity.PaymentWalletListActivity;

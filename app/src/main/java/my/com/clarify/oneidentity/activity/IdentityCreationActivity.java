@@ -6,9 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -169,7 +169,7 @@ public class IdentityCreationActivity extends AppCompatActivity{
             e.printStackTrace();
         }
 
-        AsynRestClient.genericPost(this, AsynRestClient.createIdentityWalletUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
+        AsynRestClient.genericPost(IdentityCreationActivity.this, AsynRestClient.createIdentityWalletUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 progressDialog.show();;
@@ -224,8 +224,6 @@ public class IdentityCreationActivity extends AppCompatActivity{
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
                 // called when response HTTP status is "4XX" (eg. 401, 403, 404)
-                String responseString = new String(errorResponse);
-                Log.e("Response", responseString);
                 alert(getString(R.string.error), getString(R.string.error_please_try_again));
                 Log.e("Helo", "Hello");
             }

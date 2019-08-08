@@ -3,7 +3,6 @@ package my.com.clarify.oneidentity.data;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,14 +10,10 @@ import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.os.Environment;
 import android.provider.Settings;
-import android.support.multidex.MultiDexApplication;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
+import androidx.multidex.MultiDexApplication;
+import androidx.appcompat.app.AlertDialog;
 
 import com.devs.acr.AutoErrorReporter;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,7 +21,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import cz.msebera.android.httpclient.Header;
 import my.com.clarify.oneidentity.R;
 
 public class AppDelegate extends MultiDexApplication {
@@ -36,7 +30,8 @@ public class AppDelegate extends MultiDexApplication {
     public static String appPath = "/OneIdentity";
     public static String tempFolder = "/tempFolder";
     public static String apikey = "9c24abc8797a4554a54f3c6c26c705d9";
-    public static String credDefIdOneIdentity = "8CXxwinErn2oJiUt3XyKix:3:CL:182:TAG1";
+    public static String credDefIdOneIdentity = "CDe547TPim42jouZJYvVmZ:3:CL:44:TAG1";
+    //CDe547TPim42jouZJYvVmZ:3:CL:44:TAG1
 
     public AppDelegate() {
     }

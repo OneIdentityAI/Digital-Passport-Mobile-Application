@@ -3,8 +3,8 @@ package my.com.clarify.oneidentity.activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.view.View;
 import android.widget.EditText;
 
@@ -63,15 +63,12 @@ public class ProfileAddressActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 inputAddress1.setError(null);
-                inputAddress2.setError(null);
                 inputCity.setError(null);
                 inputState.setError(null);
                 inputPostcode.setError(null);
                 inputCountry.setError(null);
                 if(inputAddress1.getText().toString().equals(""))
                     inputAddress1.setError(getString(R.string.error_required_field));
-                if(inputAddress2.getText().toString().equals(""))
-                    inputAddress2.setError(getString(R.string.error_required_field));
                 if(inputCity.getText().toString().equals(""))
                     inputCity.setError(getString(R.string.error_required_field));
                 if(inputState.getText().toString().equals(""))
@@ -81,7 +78,7 @@ public class ProfileAddressActivity extends AppCompatActivity {
                 if(inputCountry.getText().toString().equals(""))
                     inputCountry.setError(getString(R.string.error_required_field));
 
-                if(!inputAddress1.getText().toString().equals("") && !inputAddress2.getText().toString().equals("")  && !inputCity.getText().toString().equals("") && !inputState.getText().toString().equals("") && !inputPostcode.getText().toString().equals("") && !inputCountry.getText().toString().equals(""))
+                if(!inputAddress1.getText().toString().equals("") && !inputCity.getText().toString().equals("") && !inputState.getText().toString().equals("") && !inputPostcode.getText().toString().equals("") && !inputCountry.getText().toString().equals(""))
                 {
                     SharedPreferences preferences = getSharedPreferences(AppDelegate.SharedPreferencesTag, Context.MODE_PRIVATE);
                     final SharedPreferences.Editor editor = preferences.edit();

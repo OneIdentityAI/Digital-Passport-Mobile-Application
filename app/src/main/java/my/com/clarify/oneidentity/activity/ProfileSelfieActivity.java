@@ -6,13 +6,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +21,6 @@ import com.bumptech.glide.Glide;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.pedro.library.AutoPermissions;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -163,6 +161,7 @@ public class ProfileSelfieActivity extends AppCompatActivity {
                         alert(errorObject.getString("type"), errorObject.getString("message"));
                         return;
                     }
+
                     String imageBase64 = jsonObject.getString("data");
                     byte[] imageByteArray = Base64.decode(imageBase64, Base64.DEFAULT);
                     Glide.with(ProfileSelfieActivity.this)

@@ -6,11 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.PopupMenu;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.PopupMenu;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -290,10 +290,10 @@ public class BuildYourProfileActivity extends AppCompatActivity {
         }
 
         Log.e("Json", jsonObject.toString());
-        AsynRestClient.genericPost(this, AsynRestClient.identityVerificationUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
+        AsynRestClient.genericPost(BuildYourProfileActivity.this, AsynRestClient.identityVerificationUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
-                progressDialog.show();;
+                progressDialog.show();
             }
 
             @Override
@@ -323,6 +323,7 @@ public class BuildYourProfileActivity extends AppCompatActivity {
                         return;
                     }
                     imageCreateIdentity.setVisibility(View.GONE);
+                    isCalled = false;
                     retrieveData();
                 }
                 catch (JSONException e)
@@ -335,7 +336,6 @@ public class BuildYourProfileActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
                 // called when response HTTP status is "4XX" (eg. 401, 403, 404)
                 alert(getString(R.string.error), getString(R.string.error_please_try_again));
-                Log.e("Helo", "Hello");
             }
         });
     }
@@ -378,7 +378,7 @@ public class BuildYourProfileActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        AsynRestClient.genericPost(this, AsynRestClient.listCredentialUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
+        AsynRestClient.genericPost(BuildYourProfileActivity.this, AsynRestClient.listCredentialUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 progressDialog.show();;
@@ -462,7 +462,7 @@ public class BuildYourProfileActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        AsynRestClient.genericPost(this, AsynRestClient.webSignInUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
+        AsynRestClient.genericPost(BuildYourProfileActivity.this, AsynRestClient.webSignInUrl, jsonObject.toString(), new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 progressDialog.show();;

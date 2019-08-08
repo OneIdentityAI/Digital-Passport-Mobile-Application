@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="horizontal">
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_back"
                         android:layout_width="12dip"
                         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:orientation="horizontal">
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_menu"
                         android:layout_width="26dip"
                         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip">
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="fitCenter"
@@ -82,7 +82,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="8"
@@ -104,7 +104,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_pie_1"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_pie_2"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_pie_3"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
@@ -173,7 +173,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_pie_4"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
@@ -196,7 +196,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_pie_5"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
@@ -219,7 +219,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_pie_6"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
@@ -242,7 +242,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_pie_7"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
@@ -265,7 +265,7 @@
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/image_pie_8"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
@@ -312,7 +312,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:orientation="horizontal">
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="60dip"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitCenter"
@@ -338,7 +338,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="20dip"/>
 
-                        <android.support.v7.widget.AppCompatImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/image_create_identity"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

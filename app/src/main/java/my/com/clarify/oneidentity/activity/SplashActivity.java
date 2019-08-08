@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-
-import com.loopj.android.http.AsyncHttpClient;
+import androidx.appcompat.app.AppCompatActivity;
 
 import my.com.clarify.oneidentity.R;
 import my.com.clarify.oneidentity.data.AppDelegate;

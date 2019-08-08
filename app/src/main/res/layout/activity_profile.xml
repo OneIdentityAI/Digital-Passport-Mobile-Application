@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="horizontal" >
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="140dip"
         android:layout_height="140dip"
         android:layout_alignParentRight="true"
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:orientation="vertical">
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/image_back"
                     android:layout_width="40dip"
                     android:layout_height="30dip"
@@ -60,7 +60,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="20dip"
                             android:orientation="horizontal">
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="24dip"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitCenter"
@@ -91,7 +91,7 @@
                                     android:textColor="#cfcfcf"
                                     app:fontFamily="sans-serif"/>
                             </LinearLayout>
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="10dip"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="14dip"
@@ -100,7 +100,7 @@
                                 app:srcCompat="@drawable/next"/>
                         </LinearLayout>
 
-                        <android.support.v7.widget.AppCompatImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:scaleType="fitCenter"
@@ -118,7 +118,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="20dip"
                             android:orientation="horizontal">
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="24dip"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitCenter"
@@ -149,7 +149,7 @@
                                     android:textColor="#cfcfcf"
                                     app:fontFamily="sans-serif"/>
                             </LinearLayout>
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="10dip"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="14dip"
@@ -158,7 +158,7 @@
                                 app:srcCompat="@drawable/next"/>
                         </LinearLayout>
 
-                        <android.support.v7.widget.AppCompatImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:scaleType="fitCenter"
@@ -175,7 +175,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="20dip"
                             android:orientation="horizontal">
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="24dip"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitCenter"
@@ -206,7 +206,7 @@
                                     android:textColor="#cfcfcf"
                                     app:fontFamily="sans-serif"/>
                             </LinearLayout>
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="10dip"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="14dip"
@@ -215,7 +215,7 @@
                                 app:srcCompat="@drawable/next"/>
                         </LinearLayout>
 
-                        <android.support.v7.widget.AppCompatImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:scaleType="fitCenter"
@@ -232,7 +232,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="20dip"
                             android:orientation="horizontal">
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="24dip"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitCenter"
@@ -263,7 +263,7 @@
                                     android:textColor="#cfcfcf"
                                     app:fontFamily="sans-serif"/>
                             </LinearLayout>
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="10dip"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="14dip"
@@ -272,7 +272,7 @@
                                 app:srcCompat="@drawable/next"/>
                         </LinearLayout>
 
-                        <android.support.v7.widget.AppCompatImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:scaleType="fitCenter"
@@ -289,7 +289,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="20dip"
                             android:orientation="horizontal">
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="24dip"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitCenter"
@@ -320,7 +320,7 @@
                                     android:textColor="#cfcfcf"
                                     app:fontFamily="sans-serif"/>
                             </LinearLayout>
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="10dip"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="14dip"
@@ -329,7 +329,7 @@
                                 app:srcCompat="@drawable/next"/>
                         </LinearLayout>
 
-                        <android.support.v7.widget.AppCompatImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:scaleType="fitCenter"
@@ -346,7 +346,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="20dip"
                             android:orientation="horizontal">
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="24dip"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitCenter"
@@ -377,7 +377,7 @@
                                     android:textColor="#cfcfcf"
                                     app:fontFamily="sans-serif"/>
                             </LinearLayout>
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="10dip"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="14dip"
@@ -386,7 +386,7 @@
                                 app:srcCompat="@drawable/next"/>
                         </LinearLayout>
 
-                        <android.support.v7.widget.AppCompatImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:scaleType="fitCenter"
@@ -404,7 +404,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="20dip"
                             android:orientation="horizontal">
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="24dip"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitCenter"
@@ -435,7 +435,7 @@
                                     android:textColor="#cfcfcf"
                                     app:fontFamily="sans-serif"/>
                             </LinearLayout>
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="10dip"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="14dip"
@@ -444,7 +444,7 @@
                                 app:srcCompat="@drawable/next"/>
                         </LinearLayout>
 
-                        <android.support.v7.widget.AppCompatImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:scaleType="fitCenter"
@@ -466,7 +466,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="20dip"
                                 android:orientation="horizontal">
-                                <android.support.v7.widget.AppCompatImageView
+                                <androidx.appcompat.widget.AppCompatImageView
                                     android:layout_width="20dip"
                                     android:layout_height="wrap_content"
                                     android:scaleType="fitCenter"
@@ -497,7 +497,7 @@
                                         android:textColor="#cfcfcf"
                                         app:fontFamily="sans-serif"/>
                                 </LinearLayout>
-                                <android.support.v7.widget.AppCompatImageView
+                                <androidx.appcompat.widget.AppCompatImageView
                                     android:layout_width="10dip"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="14dip"
@@ -506,7 +506,7 @@
                                     app:srcCompat="@drawable/next"/>
                             </LinearLayout>
 
-                            <android.support.v7.widget.AppCompatImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitCenter"
@@ -514,7 +514,7 @@
                                 app:srcCompat="@drawable/divider"/>
                         </LinearLayout>
                     </LinearLayout>
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:scaleType="fitCenter"
