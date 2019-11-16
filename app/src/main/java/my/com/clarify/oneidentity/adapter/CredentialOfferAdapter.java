@@ -1,24 +1,26 @@
 package my.com.clarify.oneidentity.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.json.JSONObject;
 
 import my.com.clarify.oneidentity.R;
-import my.com.clarify.oneidentity.activity.ConnectionListActivity;
+import my.com.clarify.oneidentity.activity.ConnectionActivity;
 
 public class CredentialOfferAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     public int VIEW_TYPE_DATA = 0;
-    public ConnectionListActivity activity;
+    public ConnectionActivity activity;
     public int scrollCount = 0;
     public int index = 0;
-    public CredentialOfferAdapter(ConnectionListActivity activity, int index)
+    public CredentialOfferAdapter(ConnectionActivity activity, int index)
     {
         this.activity = activity;
         this.index = index;

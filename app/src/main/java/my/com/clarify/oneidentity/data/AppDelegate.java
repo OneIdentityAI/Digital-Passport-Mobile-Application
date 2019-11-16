@@ -1,38 +1,61 @@
 package my.com.clarify.oneidentity.data;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Matrix;
-import android.media.ExifInterface;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.Settings;
-import androidx.multidex.MultiDexApplication;
+import android.telephony.TelephonyManager;
+
 import androidx.appcompat.app.AlertDialog;
+import androidx.exifinterface.media.ExifInterface;
+import androidx.multidex.MultiDexApplication;
 
 import com.devs.acr.AutoErrorReporter;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import my.com.clarify.oneidentity.R;
 
 public class AppDelegate extends MultiDexApplication {
     public static int BARCODE_REQUEST_CODE = 0;
-    public static String SharedPreferencesTag = "one_identity";
+    public static int SIGN_IN_REQUEST_CODE = 1;
+    public static String SharedPreferencesTag = "OneIdentity";
 
     public static String appPath = "/OneIdentity";
     public static String tempFolder = "/tempFolder";
-    public static String apikey = "9c24abc8797a4554a54f3c6c26c705d9";
-    public static String credDefIdOneIdentity = "CDe547TPim42jouZJYvVmZ:3:CL:44:TAG1";
-    //CDe547TPim42jouZJYvVmZ:3:CL:44:TAG1
+    public static String livenessToken = "58b3a2696b68a5e4f3887b60998503f417c7c927c7e782d7d908f43e478d49e9e0374ec0d33a3efa7f650dc7e4948fdb0724b2815c3de1660161ce167f8ea9b5";
+    public static String apikey = "9f7b7a7ab2f65627c0dad91a8b7caf64";
+    public static String credDefIdOneIdentity = "SbjTsmm9TkyppiNQx4GtK1:3:CL:270:TAG1";
 
+    public static boolean shouldRefreshConnectionList = false;
+
+    public Handler handler = new Handler();
+    public int delay = 1000;
     public AppDelegate() {
     }
 
@@ -59,6 +82,18 @@ public class AppDelegate extends MultiDexApplication {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean isGooglePlayServicesAvailable(Activity activity) {
+        GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
+        int status = googleApiAvailability.isGooglePlayServicesAvailable(activity);
+        if(status != ConnectionResult.SUCCESS) {
+            if(googleApiAvailability.isUserResolvableError(status)) {
+                googleApiAvailability.getErrorDialog(activity, status, 2404).show();
+            }
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -89,12 +124,36 @@ public class AppDelegate extends MultiDexApplication {
     {
         Calendar now = Calendar.getInstance();
         Date date = now.getTime();
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddhhmmss");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyyMMddhhmmss", Locale.US);
         String formattedDate = format.format(date);
 
         return getDeviceId(context) + "-" + formattedDate;
     }
 
+    public static Bitmap encodeStringAsQRBitmap(String str) throws WriterException {
+        BitMatrix result;
+        try {
+            result = new MultiFormatWriter().encode(str,
+                    BarcodeFormat.QR_CODE, 500, 500, null);
+        } catch (IllegalArgumentException iae) {
+            // Unsupported format
+            return null;
+        }
+        int w = result.getWidth();
+        int h = result.getHeight();
+        int[] pixels = new int[w * h];
+        for (int y = 0; y < h; y++) {
+            int offset = y * w;
+            for (int x = 0; x < w; x++) {
+                pixels[offset + x] = result.get(x, y) ? Color.BLACK : Color.WHITE;
+            }
+        }
+        Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        bitmap.setPixels(pixels, 0, 500, 0, 0, w, h);
+        return bitmap;
+    }
+
+    @SuppressLint("HardwareIds")
     public static String getDeviceId(Context context)
     {
         return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
@@ -120,7 +179,6 @@ public class AppDelegate extends MultiDexApplication {
         }
         if(scaledBitmap != null)
             scaledBitmap.recycle();
-
         return resizedFilePath;
     }
 
@@ -145,11 +203,10 @@ public class AppDelegate extends MultiDexApplication {
             {
                 int bWidth = bitmap.getWidth();
                 int bHeight = bitmap.getHeight();
-                int nWidth = width;
                 int nHeight = (int) Math.round(width/( (1.0*bWidth) / bHeight ));
 
                 //int nHeight = Math.round(height * parentRatio);
-                bitmap = Bitmap.createScaledBitmap( bitmap, nWidth, nHeight, false );
+                bitmap = Bitmap.createScaledBitmap( bitmap, width, nHeight, false );
 
                 try {
                     ExifInterface exif = new ExifInterface(filename);
@@ -164,8 +221,7 @@ public class AppDelegate extends MultiDexApplication {
                     else if (orientation == 8) {
                         matrix.postRotate(270);
                     }
-                    Bitmap myBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true); // rotating bitmap
-                    return myBitmap;
+                    return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
                 }
                 catch (Exception e) {
 

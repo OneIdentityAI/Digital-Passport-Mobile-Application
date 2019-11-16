@@ -6,51 +6,34 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical" >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_margin="10dip"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_width="0dip"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/text_name"
+            android:fontFamily="@font/nbi_light"
+            android:layout_width="200dip"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dip"
-            android:layout_marginRight="10dip"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:singleLine="false"
+            android:minWidth="200dip"
+            android:textSize="16sp"
+            android:textColor="@color/colorBlack"
+            android:text="@string/match_result" />
 
-            <TextView
-                android:id="@+id/text_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dip"
-                android:layout_marginBottom="10dip"
-                android:text="Name"
-                android:textSize="14sp"
-                android:textColor="#a0a7ff"
-                app:fontFamily="sans-serif"/>
+        <Space
+            android:layout_width="10dip"
+            android:layout_height="10dip" />
 
-            <EditText
-                android:id="@+id/input_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:inputType="text"
-                android:hint=""
-                android:text=""
-                android:textSize="15sp"
-                android:textColor="@color/colorInput"
-                app:fontFamily="sans-serif"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/image_upload"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/default_photo"/>
-        </LinearLayout>
+        <TextView
+            android:id="@+id/text_value"
+            android:fontFamily="@font/nbi_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/colorIndigo"
+            android:text="Result" />
     </LinearLayout>
 </LinearLayout>

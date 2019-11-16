@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_connection"
+        android:enabled="true"
+        android:icon="@drawable/ic_tap_and_play_black_24dp"
+        android:title="@string/connection" />
+    <item
+        android:id="@+id/action_message"
+        android:enabled="true"
+        android:icon="@drawable/ic_message_black_24dp"
+        android:title="@string/message" />
+    <item
+        android:id="@+id/action_credential"
+        android:enabled="true"
+        android:icon="@drawable/ic_beenhere_black_24dp"
+        android:title="@string/credential" />
+    <item
+        android:id="@+id/action_did"
+        android:enabled="true"
+        android:icon="@drawable/ic_assignment_black_24dp"
+        android:title="@string/did" />
+    <item
+        android:id="@+id/action_proof"
+        android:enabled="true"
+        android:icon="@drawable/ic_assignment_turned_in_black_24dp"
+        android:title="@string/proof" />
+</menu>

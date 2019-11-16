@@ -1,11 +1,12 @@
 package my.com.clarify.oneidentity.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,15 +14,15 @@ import org.json.JSONObject;
 import java.util.Iterator;
 
 import my.com.clarify.oneidentity.R;
-import my.com.clarify.oneidentity.activity.ConnectionListActivity;
+import my.com.clarify.oneidentity.activity.ConnectionActivity;
 
 public class ReceiveCredentialAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     public int VIEW_TYPE_DATA = 0;
-    public ConnectionListActivity activity;
+    public ConnectionActivity activity;
     public int scrollCount = 0;
     public int index = 0;
-    public ReceiveCredentialAdapter(ConnectionListActivity activity, int index)
+    public ReceiveCredentialAdapter(ConnectionActivity activity, int index)
     {
         this.activity = activity;
         this.index = index;
@@ -56,7 +57,7 @@ public class ReceiveCredentialAdapter extends RecyclerView.Adapter<RecyclerView.
                 try {
                     String value = data.getJSONObject("values").getJSONObject(key).getString("raw");
                     finalValue += "Attribute: " + key;
-                        finalValue += "\n";
+                    finalValue += "\n";
                     finalValue += "Value: " + value + "\n\n";
                 } catch (JSONException e) {
                     // Something went wrong!

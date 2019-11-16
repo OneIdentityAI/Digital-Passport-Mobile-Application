@@ -1,58 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_region"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical" >
-
+    android:layout_margin="10dip"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal">
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_margin="10dip"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:orientation="vertical">
         <LinearLayout
-            android:layout_width="0dip"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/text_name"
+                android:fontFamily="@font/nbi_light"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/text_name"
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Attribute: Name"
-                    android:textSize="16sp"
-                    android:textColor="#a0a7ff"
-                    app:fontFamily="sans-serif"/>
-                <TextView
-                    android:id="@+id/text_schema"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textSize="16sp"
-                    android:textColor="#a0a7ff"
-                    app:fontFamily="sans-serif"/>
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/input_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:inputType="text"
-                android:imeOptions="actionDone"
-                android:hint=""
-                android:text=""
-                android:textSize="15sp"
-                android:textColor="@color/colorInput"
-                app:fontFamily="sans-serif"/>
+                android:gravity="right"
+                android:textSize="16sp"
+                android:textColor="@color/colorIndigo"
+                android:text="Attribute name" />
         </LinearLayout>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="6dip" />
+
+        <TextView
+            android:id="@+id/text_schema"
+            android:fontFamily="@font/nbi_light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/colorGray"
+            android:text="Schema data" />
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/input_value"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:inputType="text"
+        android:imeOptions="actionDone"
+        android:hint=""
+        android:text=""
+        android:textSize="14sp"
+        android:textColor="@color/colorInput"
+        app:fontFamily="sans-serif"/>
 </LinearLayout>

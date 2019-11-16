@@ -10,5 +10,5 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/splash"/>
+            android:src="@drawable/splash"/>
 </LinearLayout>

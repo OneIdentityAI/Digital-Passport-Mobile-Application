@@ -1,16 +1,13 @@
 package my.com.clarify.oneidentity.adapter;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import my.com.clarify.oneidentity.R;
 import my.com.clarify.oneidentity.activity.CreateProofOfferActivity;
@@ -45,20 +42,6 @@ public class CreateProofOfferAdapter extends RecyclerView.Adapter<RecyclerView.V
         else
         {
             viewHolder.inputValue.setEnabled(true);
-            viewHolder.inputValue.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    activity.attributeValueList.set(position, charSequence + "");
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-                }
-            });
         }
         viewHolder.inputValue.setText(activity.attributeValueList.get(position));
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dip"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_back"
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_arrow_back_black_24dp"/>
+
+        <TextView
+            android:fontFamily="@font/nbi_b"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/colorLightIndigo"
+            android:text="@string/ekyc" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="30dip"
+            android:layout_height="30dip"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <TextView
+                android:fontFamily="@font/nbi_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"
+                android:text="@string/choose_id_document_type" />
+
+            <RadioGroup
+                android:id="@+id/radiogroup_id_document_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton android:id="@+id/radio_document_type_passport"
+                    android:fontFamily="@font/nbi_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dip"
+                    android:checked="true"
+                    android:textSize="16sp"
+                    android:text="@string/passport"/>
+                <RadioButton android:id="@+id/radio_document_type_ic"
+                    android:fontFamily="@font/nbi_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dip"
+                    android:textSize="16sp"
+                    android:text="@string/ic"/>
+            </RadioGroup>
+            <LinearLayout
+                android:id="@+id/layout_nationality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dip"/>
+
+                <TextView
+                    android:fontFamily="@font/nbi_b"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/nationality" />
+
+                <EditText
+                    android:id="@+id/input_nationality"
+                    android:fontFamily="@font/nbi_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:hint=""
+                    android:text=""
+                    android:textSize="16sp"
+                    android:textColor="@color/colorInput"
+                    android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+                    app:fontFamily="sans-serif"/>
+            </LinearLayout>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="10dip"/>
+
+            <TextView
+                android:fontFamily="@font/nbi_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:text="@string/submit_identity_document" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dip"/>
+
+            <TextView
+                android:fontFamily="@font/nbi_light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorGray"
+                android:text="@string/passport_image_message" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dip" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_upload_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/default_photo"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/image_upload_id"
+                    android:layout_marginBottom="20dip"
+                    android:gravity="center"
+                    android:text="@string/tap_to_upload_photo"
+                    android:textSize="14sp"
+                    android:textColor="#979797"
+                    app:fontFamily="sans-serif"/>
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="40dip" />
+
+            <Button
+                android:id="@+id/button_submit"
+                android:fontFamily="@font/nbi_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:minWidth="200dip"
+                android:padding="0dip"
+                android:textSize="16sp"
+                android:textColor="@color/colorWhite"
+                android:text="@string/submit_for_verification"
+                android:background="@drawable/rounded_indigo"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dip" />
+
+            <Button
+                android:id="@+id/button_verification_result"
+                android:fontFamily="@font/nbi_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:minWidth="200dip"
+                android:padding="0dip"
+                android:textSize="16sp"
+                android:textColor="@color/colorWhite"
+                android:text="@string/verification_result"
+                android:background="@drawable/rounded_indigo"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="40dip"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

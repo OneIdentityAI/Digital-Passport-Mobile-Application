@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dip"
+            android:gravity="center"
+            android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_back"
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_arrow_back_black_24dp"/>
+                <TextView
+                    android:fontFamily="@font/nbi_b"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textColor="@color/colorLightIndigo"
+                    android:text="@string/my_endpoint_did" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/image_qrcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorGray"
+                    android:padding="1dip"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"/>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dip" />
+
+                <TextView
+                    android:id="@+id/text_address"
+                    android:fontFamily="@font/nbi_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorTurquoise"
+                    android:text="Address" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dip" />
+        <Button
+            android:id="@+id/button_copy_link"
+            android:fontFamily="@font/nbi_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:minWidth="200dip"
+            android:padding="0dip"
+            android:textSize="16sp"
+            android:textColor="@color/colorWhite"
+            android:text="@string/copy_address"
+            android:background="@drawable/rounded_indigo"/>
+</LinearLayout>

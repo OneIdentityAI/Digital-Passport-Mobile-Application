@@ -1,175 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="my.com.clarify.oneidentity">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+
     <application
         android:name=".data.AppDelegate"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:hardwareAccelerated="true"
         android:largeHeap="true"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.SplashActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WelcomeActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.WelcomeActivity">
         </activity>
-        <activity android:name=".activity.IdentityCreationActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.KYCSelfieActivity">
         </activity>
-        <activity android:name=".activity.BuildYourProfileActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.KYCIdentityDocumentActivity">
         </activity>
-        <activity android:name=".activity.ProfileActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.KYCVerificationResultActivity">
         </activity>
-        <activity android:name=".activity.ProfileMyIdentityActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.DISelfieActivity">
         </activity>
-        <activity android:name=".activity.ProfileAddressActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.DIIdentityDocumentActivity">
         </activity>
-        <activity android:name=".activity.ProfileDobActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.DIReviewVerificationResultActivity">
         </activity>
-        <activity android:name=".activity.ProfilePhoneActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.MainActivity">
         </activity>
-        <activity android:name=".activity.ProfilePassportActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.ConnectionActivity">
         </activity>
-        <activity android:name=".activity.ProfileProofActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.CreateProofOfferActivity">
         </activity>
-        <activity android:name=".activity.ProfileSelfieActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.MessageActivity">
         </activity>
-        <activity android:name=".activity.ProfileWalletActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.GenericDetailActivity">
         </activity>
-        <activity android:name=".activity.SigninActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden">
+        <activity android:name=".activity.CredentialActivity">
         </activity>
-        <activity
-            android:name=".activity.PaymentWalletListActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+        <activity android:name=".activity.MyEndpointDIDActivity">
         </activity>
-        <activity
-            android:name=".activity.PaymentWalletAddActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+        <activity android:name=".activity.DIDActivity">
         </activity>
-        <activity
-            android:name=".activity.DIDListActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+        <activity android:name=".activity.ProofActivity">
         </activity>
-        <activity
-            android:name=".activity.DIDAddActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
-        <activity
-            android:name=".activity.GenericDetailActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
-        <activity
-            android:name=".activity.ConnectionListActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
-        <activity
-            android:name=".activity.MessageListActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
-        <activity
-            android:name=".activity.CredentialListActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
-        <activity
-            android:name=".activity.CreateProofOfferActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden" >
-        </activity>
-        <provider
-            android:name=".data.GenericFileProvider"
-            android:authorities="${applicationId}.my.package.name.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
-        </provider>
-        <meta-data android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
-        <meta-data
-            android:name="com.google.android.gms.vision.DEPENDENCIES"
-            android:value="face" />
     </application>
+
 </manifest>

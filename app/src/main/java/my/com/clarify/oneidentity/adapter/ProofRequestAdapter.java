@@ -1,26 +1,26 @@
 package my.com.clarify.oneidentity.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import my.com.clarify.oneidentity.R;
-import my.com.clarify.oneidentity.activity.ConnectionListActivity;
+import my.com.clarify.oneidentity.activity.ConnectionActivity;
 
 public class ProofRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     public int VIEW_TYPE_DATA = 0;
-    public ConnectionListActivity activity;
+    public ConnectionActivity activity;
     public int scrollCount = 0;
     public int index = 0;
-    public ProofRequestAdapter(ConnectionListActivity activity, int index)
+    public ProofRequestAdapter(ConnectionActivity activity, int index)
     {
         this.activity = activity;
         this.index = index;
@@ -72,7 +72,7 @@ public class ProofRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     }
                 }
             }
-            viewHolder.textTotal.setText(attributesString);
+            viewHolder.textValue.setText(attributesString);
             viewHolder.layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -101,13 +101,13 @@ public class ProofRequestAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     {
         public LinearLayout layout;
         public TextView textName;
-        public TextView textTotal;
+        public TextView textValue;
 
         public ItemViewHolder(View view) {
             super(view);
             layout = view.findViewById(R.id.layout_region);
             textName = view.findViewById(R.id.text_name);
-            textTotal = view.findViewById(R.id.text_total);
+            textValue = view.findViewById(R.id.text_value);
         }
     }
 }

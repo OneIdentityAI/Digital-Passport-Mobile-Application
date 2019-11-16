@@ -1,21 +1,23 @@
 package my.com.clarify.oneidentity.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import my.com.clarify.oneidentity.R;
-import my.com.clarify.oneidentity.activity.ConnectionListActivity;
+import my.com.clarify.oneidentity.activity.ConnectionActivity;
 
 public class ConnectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     public int VIEW_TYPE_DATA = 0;
-    public ConnectionListActivity activity;
+    public ConnectionActivity activity;
     int scrollCount = 0;
-    public ConnectionAdapter(ConnectionListActivity activity)
+    public ConnectionAdapter(ConnectionActivity activity)
     {
         this.activity = activity;
     }
@@ -39,7 +41,8 @@ public class ConnectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         userName = userName.trim().equals("")?"Unknown":userName;
         companyName = companyName.equals("")?"Unknown":companyName;
         walletName = walletName.equals("")?"Unknown":walletName;
-        viewHolder.textDetail.setText("Connect To: \n" + userName + " from " + companyName + "\nWallet Name: " + walletName);
+        //viewHolder.textDetail.setText("Connect To: \n" + userName + " from " + companyName + "\nWallet Name: " + walletName);
+        viewHolder.textDetail.setText("Endpoint DID: " + activity.theirEndpointDIDList.get(position));
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,26 +54,26 @@ public class ConnectionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         if(activity.totalCredentialOfferList.get(position) > 0) {
             if(!action.equals(""))
                 action += " / ";
-            action += " view " + activity.totalCredentialOfferList.get(position) + " cred offer";
+            action += " &#9864;&#x20;" + activity.totalCredentialOfferList.get(position) + " Cred Offer&#x20;";
         }
         if(activity.totalReceiveCredentialList.get(position) > 0) {
             if(!action.equals(""))
                 action += " / ";
-            action += " view " + activity.totalReceiveCredentialList.get(position) + " Cred Issuance";
+            action += " &#9864;&#x20;" + activity.totalReceiveCredentialList.get(position) + " Cred Issuance&#x20;";
         }
         if(activity.totalProofRequestList.get(position) > 0) {
             if(!action.equals(""))
                 action += " / ";
-            action += " view " + activity.totalProofRequestList.get(position) + " Proof Request";
+            action += " &#9864;&#x20;" + activity.totalProofRequestList.get(position) + " Proof Request&#x20;";
         }
         if(activity.totalProofOfferList.get(position) > 0) {
             if(!action.equals(""))
                 action += " / ";
-            action += " view " + activity.totalProofOfferList.get(position) + " Proof Offer";
+            action += " &#9864;&#x20;" + activity.totalProofOfferList.get(position) + " Proof Offer&#x20;";
         }
         if(!action.equals(""))
-            action = "Tap to" + action;
-        viewHolder.textAction.setText(action);
+            action = action;
+        viewHolder.textAction.setText(Html.fromHtml(action));
     }
 
     @Override

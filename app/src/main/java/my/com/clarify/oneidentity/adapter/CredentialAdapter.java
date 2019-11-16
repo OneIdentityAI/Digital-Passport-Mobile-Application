@@ -1,13 +1,13 @@
 package my.com.clarify.oneidentity.adapter;
 
 import android.content.Intent;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,15 +15,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import my.com.clarify.oneidentity.R;
-import my.com.clarify.oneidentity.activity.CredentialListActivity;
+import my.com.clarify.oneidentity.activity.CredentialActivity;
 import my.com.clarify.oneidentity.activity.GenericDetailActivity;
 
 public class CredentialAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     public int VIEW_TYPE_DATA = 0;
-    public CredentialListActivity activity;
+    public CredentialActivity activity;
     int scrollCount = 0;
-    public CredentialAdapter(CredentialListActivity activity)
+    public CredentialAdapter(CredentialActivity activity)
     {
         this.activity = activity;
     }

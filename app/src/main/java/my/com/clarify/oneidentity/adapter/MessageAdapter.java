@@ -1,24 +1,26 @@
 package my.com.clarify.oneidentity.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import my.com.clarify.oneidentity.R;
-import my.com.clarify.oneidentity.activity.MessageListActivity;
+import my.com.clarify.oneidentity.activity.MessageActivity;
+
 
 public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     public int VIEW_TYPE_DATA = 0;
-    public MessageListActivity activity;
+    public MessageActivity activity;
     int scrollCount = 0;
-    public MessageAdapter(MessageListActivity activity)
+    public MessageAdapter(MessageActivity activity)
     {
         this.activity = activity;
     }
@@ -42,30 +44,23 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         });
 
+        viewHolder.textId.setVisibility(View.VISIBLE);
+        viewHolder.textSender.setVisibility(View.VISIBLE);
         if(activity.typeList.get(position).equals("MSG_TYPE_CONN_REQUEST"))
         {
-            viewHolder.textAction.setText("Tap to View Detail / Delete\n(Accept connection must be done from web)");
-            viewHolder.textType.setText("New Connection Request");
-
-            try {
-                JSONObject jsonObject = new JSONObject(activity.messageList.get(position));
-                String userName = "";
-                String companyName = "";
-                String walletName = "";
-                userName = userName.trim().equals("")?"Unknown":userName;
-                companyName = companyName.equals("")?"Unknown":companyName;
-                walletName = walletName.equals("")?"Unknown":walletName;
-                viewHolder.textId.setText(userName + " from " + companyName + "\n" + "Wallet Name: " + walletName + "\n" + "Datetime: " + activity.createdList.get(position));
-            }
-            catch (JSONException e)
-            {
-                e.printStackTrace();
-            }
+            viewHolder.textType.setText(activity.getString(R.string.new_connection_request));
+            viewHolder.textAction.setText(activity.getString(R.string.message_action_new_connection_request));
+            viewHolder.textDatetime.setText(activity.createdList.get(position));
+            viewHolder.textId.setVisibility(View.GONE);
+            viewHolder.textSender.setVisibility(View.GONE);
         }
         else if(activity.typeList.get(position).equals("MSG_TYPE_CONN_ACCEPT"))
         {
-            viewHolder.textAction.setText("Tap to Acknowledge / View Detail / Delete");
-            viewHolder.textType.setText("Connection Request Accepted");
+            viewHolder.textType.setText(activity.getString(R.string.connection_request_accepted));
+            viewHolder.textAction.setText(activity.getString(R.string.message_action_acknowledge_connection));
+            viewHolder.textDatetime.setText(activity.createdList.get(position));
+            viewHolder.textId.setVisibility(View.GONE);
+            viewHolder.textSender.setVisibility(View.GONE);
             try {
                 JSONObject jsonObject = new JSONObject(activity.messageList.get(position));
                 String userName = "";
@@ -74,7 +69,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 userName = userName.trim().equals("")?"Unknown":userName;
                 companyName = companyName.equals("")?"Unknown":companyName;
                 walletName = walletName.equals("")?"Unknown":walletName;
-                viewHolder.textId.setText(userName + " from " + companyName + "\n" + "Wallet Name: " + walletName + "\n" + "Datetime: " + activity.createdList.get(position));
+                viewHolder.textId.setText(userName + " from " + companyName + "\n" + "Wallet Name: " + walletName);
             }
             catch (JSONException e)
             {
@@ -83,7 +78,10 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
         else if(activity.typeList.get(position).equals("MSG_TYPE_SECURE_SEND"))
         {
-            viewHolder.textAction.setText("Tap to Reply / View Detail / Delete");
+            viewHolder.textType.setText(activity.getString(R.string.secure_message));
+            viewHolder.textAction.setText(activity.getString(R.string.message_action_secure_message));
+            viewHolder.textDatetime.setText(activity.createdList.get(position));
+
             try {
                 JSONObject jsonObject = new JSONObject(activity.messageList.get(position));
                 String senderDid = jsonObject.getString("sender_did");
@@ -97,24 +95,25 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     }
                 }
                 if(index > -1) {
-                    String userName = activity.firstNameList.get(index) + " " + activity.lastNameList.get(index);
-                    String companyName = activity.companyNameList.get(index);
+                    viewHolder.textSender.setText(activity.nameList.get(index));
+                    String userName = activity.usernameList.get(index);
                     String walletName = activity.walletNameList.get(index);
                     userName = userName.trim().equals("")?"Unknown":userName;
-                    companyName = companyName.equals("")?"Unknown":companyName;
                     walletName = walletName.equals("")?"Unknown":walletName;
-                    viewHolder.textId.setText("Message From:\n" + userName + " from " + companyName + "\n" + "Wallet Name: " + walletName + "\n" + "Message : " + jsonObject.getString("message") + "\n" + "Datetime: " + activity.createdList.get(position));
+                    //viewHolder.textId.setText("Message From:\n" + userName + "\n" + "Wallet Name: " + walletName + "\n" + "Message : " + jsonObject.getString("message"));
                 }
+                viewHolder.textId.setText(jsonObject.getString("message"));
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
             }
-            viewHolder.textType.setText("Secure Message");
         }
         else if(activity.typeList.get(position).equals("MSG_TYPE_CREDENTIAL_OFFER"))
         {
-            viewHolder.textAction.setText("Tap to View Detail / Delete\n(Accept Cred Offer must be done from connection page)");
+            viewHolder.textType.setText(activity.getString(R.string.new_credential_offer));
+            viewHolder.textDatetime.setText(activity.createdList.get(position));
+            viewHolder.textAction.setText(activity.getString(R.string.message_action_new_credential_offer));
             try {
                 JSONObject jsonObject = new JSONObject(activity.messageList.get(position));
                 String senderDid = jsonObject.getString("sender_did");
@@ -128,24 +127,25 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     }
                 }
                 if(index > -1) {
-                    String userName = activity.firstNameList.get(index) + " " + activity.lastNameList.get(index);
-                    String companyName = activity.companyNameList.get(index);
+                    viewHolder.textSender.setText(activity.nameList.get(index));
+                    String userName = activity.usernameList.get(index);
                     String walletName = activity.walletNameList.get(index);
                     userName = userName.trim().equals("")?"Unknown":userName;
-                    companyName = companyName.equals("")?"Unknown":companyName;
                     walletName = walletName.equals("")?"Unknown":walletName;
-                    viewHolder.textId.setText("Credential Offer From:\n" + userName + " from " + companyName + "\n" + "Wallet Name: " + walletName);
+                    viewHolder.textId.setVisibility(View.GONE);
+                    //viewHolder.textId.setText("Credential Offer From:\n" + userName + "\n" + "Wallet Name: " + walletName);
                 }
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
             }
-            viewHolder.textType.setText("New Credential Offer");
         }
         else if(activity.typeList.get(position).equals("MSG_TYPE_CREDENTIAL_REQUEST"))
         {
-            viewHolder.textAction.setText("Tap to Delete\n(Issue Cred must be done from web portal)");
+            viewHolder.textType.setText(activity.getString(R.string.new_credential_request));
+            viewHolder.textAction.setText(activity.getString(R.string.message_action_new_credential_request));
+            viewHolder.textDatetime.setText(activity.createdList.get(position));
             try {
                 JSONObject jsonObject = new JSONObject(activity.messageList.get(position));
                 String senderDid = jsonObject.getString("sender_did");
@@ -159,24 +159,25 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     }
                 }
                 if(index > -1) {
-                    String userName = activity.firstNameList.get(index) + " " + activity.lastNameList.get(index);
-                    String companyName = activity.companyNameList.get(index);
+                    viewHolder.textSender.setText(activity.nameList.get(index));
+                    String userName = activity.usernameList.get(index);
                     String walletName = activity.walletNameList.get(index);
                     userName = userName.trim().equals("")?"Unknown":userName;
-                    companyName = companyName.equals("")?"Unknown":companyName;
                     walletName = walletName.equals("")?"Unknown":walletName;
-                    viewHolder.textId.setText("Credential Request From:\n" + userName + " from " + companyName + "\n" + "Wallet Name: " + walletName);
+                    viewHolder.textId.setVisibility(View.GONE);
+                    //viewHolder.textId.setText("Credential Request From:\n" + userName + "\n" + "Wallet Name: " + walletName);
                 }
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
             }
-            viewHolder.textType.setText("New Credential Offer");
         }
         else if(activity.typeList.get(position).equals("MSG_TYPE_PROOF_REQUEST"))
         {
-            viewHolder.textAction.setText("Tap to View Detail / Delete\n(Create Proof Offer must be done from connection page)");
+            viewHolder.textType.setText(activity.getString(R.string.proof_request));
+            viewHolder.textAction.setText(activity.getString(R.string.message_action_new_proof_offer));
+            viewHolder.textDatetime.setText(activity.createdList.get(position));
             try {
                 JSONObject jsonObject = new JSONObject(activity.messageList.get(position));
                 String senderDid = jsonObject.getString("sender_did");
@@ -190,24 +191,25 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     }
                 }
                 if(index > -1) {
-                    String userName = activity.firstNameList.get(index) + " " + activity.lastNameList.get(index);
-                    String companyName = activity.companyNameList.get(index);
+                    viewHolder.textSender.setText(activity.nameList.get(index));
+                    String userName = activity.usernameList.get(index);
                     String walletName = activity.walletNameList.get(index);
                     userName = userName.trim().equals("")?"Unknown":userName;
-                    companyName = companyName.equals("")?"Unknown":companyName;
                     walletName = walletName.equals("")?"Unknown":walletName;
-                    viewHolder.textId.setText("Proof Request From:\n" + userName + " from " + companyName + "\n" + "Wallet Name: " + walletName);
+                    viewHolder.textId.setVisibility(View.GONE);
+                    //viewHolder.textId.setText("Proof Request From:\n" + userName + "\n" + "Wallet Name: " + walletName);
                 }
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
             }
-            viewHolder.textType.setText("New Proof Request");
         }
         else if(activity.typeList.get(position).equals("MSG_TYPE_PROOF_OFFER"))
         {
-            viewHolder.textAction.setText("Tap to View Detail / Delete\n(Accept Proof Offer must be done from connection page)");
+            viewHolder.textType.setText(activity.getString(R.string.new_proof_offer));
+            viewHolder.textAction.setText(activity.getString(R.string.message_action_new_proof_offer));
+            viewHolder.textDatetime.setText(activity.createdList.get(position));
             try {
                 JSONObject jsonObject = new JSONObject(activity.messageList.get(position));
                 String senderDid = jsonObject.getString("sender_did");
@@ -221,24 +223,25 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     }
                 }
                 if(index > -1) {
-                    String userName = activity.firstNameList.get(index) + " " + activity.lastNameList.get(index);
-                    String companyName = activity.companyNameList.get(index);
+                    viewHolder.textSender.setText(activity.nameList.get(index));
+                    String userName = activity.usernameList.get(index);
                     String walletName = activity.walletNameList.get(index);
                     userName = userName.trim().equals("")?"Unknown":userName;
-                    companyName = companyName.equals("")?"Unknown":companyName;
                     walletName = walletName.equals("")?"Unknown":walletName;
-                    viewHolder.textId.setText("Proof Offer From:\n" + userName + " from " + companyName + "\n" + "Wallet Name: " + walletName);
+                    viewHolder.textId.setVisibility(View.GONE);
+                    //viewHolder.textId.setText("Proof Offer From:\n" + userName + "\n" + "Wallet Name: " + walletName);
                 }
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
             }
-            viewHolder.textType.setText("New Proof Offer");
         }
         else if(activity.typeList.get(position).equals("MSG_TYPE_CREDENTIAL_ACCEPT_REQUEST"))
         {
-            viewHolder.textAction.setText("View Detail / Delete\n(Receive Credential must be done from connection page)");
+            viewHolder.textType.setText(activity.getString(R.string.new_credential_issuance));
+            viewHolder.textAction.setText(activity.getString(R.string.message_action_new_credential_issuance));
+            viewHolder.textDatetime.setText(activity.createdList.get(position));
             try {
                 JSONObject jsonObject = new JSONObject(activity.messageList.get(position));
                 String senderDid = jsonObject.getString("sender_did");
@@ -252,20 +255,19 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     }
                 }
                 if(index > -1) {
-                    String userName = activity.firstNameList.get(index) + " " + activity.lastNameList.get(index);
-                    String companyName = activity.companyNameList.get(index);
+                    viewHolder.textSender.setText(activity.nameList.get(index));
+                    String userName = activity.usernameList.get(index);
                     String walletName = activity.walletNameList.get(index);
                     userName = userName.trim().equals("")?"Unknown":userName;
-                    companyName = companyName.equals("")?"Unknown":companyName;
                     walletName = walletName.equals("")?"Unknown":walletName;
-                    viewHolder.textId.setText("Credential Issued From:\n" + userName + " from " + companyName + "\n" + "Wallet Name: " + walletName);
+                    viewHolder.textId.setVisibility(View.GONE);
+                    //viewHolder.textId.setText("Credential Issued From:\n" + userName + "\n" + "Wallet Name: " + walletName);
                 }
             }
             catch (JSONException e)
             {
                 e.printStackTrace();
             }
-            viewHolder.textType.setText("New Credential Issuance");
         }
     }
 
@@ -286,13 +288,17 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public TextView textType;
         public TextView textId;
         public TextView textAction;
+        public TextView textDatetime;
+        public TextView textSender;
 
         public ItemViewHolder(View view) {
             super(view);
             layout = view.findViewById(R.id.layout_region);
             textType = view.findViewById(R.id.text_type);
-            textId = view.findViewById(R.id.text_id);
+            textId = view.findViewById(R.id.text_detail);
             textAction = view.findViewById(R.id.text_action);
+            textDatetime = view.findViewById(R.id.text_datetime);
+            textSender = view.findViewById(R.id.text_sender);
         }
     }
 }

@@ -1,22 +1,24 @@
 package my.com.clarify.oneidentity.adapter;
 
 import android.graphics.Color;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
 import my.com.clarify.oneidentity.R;
-import my.com.clarify.oneidentity.activity.DIDListActivity;
+import my.com.clarify.oneidentity.activity.DIDActivity;
 
 public class DIDAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     public int VIEW_TYPE_DATA = 0;
-    public DIDListActivity activity;
+    public DIDActivity activity;
     int scrollCount = 0;
-    public DIDAdapter(DIDListActivity activity)
+    public DIDAdapter(DIDActivity activity)
     {
         this.activity = activity;
     }
@@ -38,13 +40,13 @@ public class DIDAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         {
             viewHolder.textAction.setText("Tap to use for new connection / View Detail");
             viewHolder.textUse.setText("Available");
-            viewHolder.textUse.setTextColor(Color.BLUE);
+            viewHolder.textUse.setTextColor(ContextCompat.getColor(activity, R.color.colorLightIndigo));
         }
         else
         {
             viewHolder.textAction.setText("Tap to View Detail");
             viewHolder.textUse.setText("Used");
-            viewHolder.textUse.setTextColor(Color.RED);
+            viewHolder.textUse.setTextColor(ContextCompat.getColor(activity, R.color.colorRed));
         }
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override

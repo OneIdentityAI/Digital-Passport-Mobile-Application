@@ -4,17 +4,21 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -24,18 +28,18 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import cz.msebera.android.httpclient.Header;
 import my.com.clarify.oneidentity.R;
 import my.com.clarify.oneidentity.adapter.CreateProofOfferAdapter;
 import my.com.clarify.oneidentity.data.AppDelegate;
 import my.com.clarify.oneidentity.data.AsynRestClient;
+import cz.msebera.android.httpclient.Header;
 
 public class CreateProofOfferActivity extends AppCompatActivity {
     public AppCompatImageView imageBack;
+    public Button buttonSubmit;
 
     public CreateProofOfferAdapter adapter;
     public RecyclerView recyclerView;
-    public TextView textNoData;
     public ArrayList<String> attributeNameList = new ArrayList<String>();
     public ArrayList<String> attributeSchemaNameList = new ArrayList<String>();
     public ArrayList<String> attributeSchemaVerList = new ArrayList<String>();
@@ -51,11 +55,14 @@ public class CreateProofOfferActivity extends AppCompatActivity {
     public String senderDid = "";
     public String messageId = "";
     public String data = "";
-    public ImageView imageCreate;
     public boolean isCreate = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.colorWhite));
+        }
         setContentView(R.layout.activity_create_proof_offer);
 
         senderDid = getIntent().getExtras().getString("sender_did");
@@ -76,21 +83,17 @@ public class CreateProofOfferActivity extends AppCompatActivity {
             }
         });
 
-        imageCreate = findViewById(R.id.image_create);
-        imageCreate.setOnClickListener(new View.OnClickListener() {
+        buttonSubmit = findViewById(R.id.button_submit);
+        buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean isAnyEmpty = false;
-
-                for(int i=0;i< attributeValueList.size(); i++){
-                    String value = attributeValueList.get(i);
-                    Log.e("Hello", value + "");
-                    if(value.equals(""))
+                for(int i = 0; i < attributeValueList.size(); i++) {
+                    if(attributeValueList.get(i).equals(""))
                     {
                         isAnyEmpty = true;
                     }
                 }
-
                 if(isAnyEmpty)
                 {
                     alert("Error", "Self-attested attribute cannot be blank");
@@ -103,9 +106,8 @@ public class CreateProofOfferActivity extends AppCompatActivity {
             }
         });
 
-        textNoData = findViewById(R.id.text_no_data);
         recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         adapter = new CreateProofOfferAdapter(this);
         //recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
@@ -150,7 +152,7 @@ public class CreateProofOfferActivity extends AppCompatActivity {
         final SharedPreferences preferences = getSharedPreferences(AppDelegate.SharedPreferencesTag, Context.MODE_PRIVATE);
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("token", preferences.getString(getString(R.string.param_token), ""));
+            jsonObject.put("token", preferences.getString(getString(R.string.param_oneid_token), ""));
         }
         catch (Exception e)
         {
@@ -196,6 +198,7 @@ public class CreateProofOfferActivity extends AppCompatActivity {
 
                     try
                     {
+                        Log.e("Data", data);
                         JSONObject data2 = new JSONObject(data);
                         JSONObject proofReq = data2.getJSONObject("proof_request");
                         JSONArray mapping = data2.getJSONArray("mapping");
@@ -220,6 +223,7 @@ public class CreateProofOfferActivity extends AppCompatActivity {
                                     attributeSchemaNameList.add(schemaId.split(":")[2]);
                                     attributeSchemaVerList.add(schemaId.split(":")[3]);
 
+
                                     int index = credDefIdList.indexOf(credDefId);
                                     if(index != -1) {
                                         JSONObject contentObject = new JSONObject(contentList.get(index));
@@ -231,12 +235,14 @@ public class CreateProofOfferActivity extends AppCompatActivity {
                                     attributeSchemaNameList.add("");
                                     attributeSchemaVerList.add("");
                                     if(name.equals("wallet_name"))
-                                        attributeValueList.add(preferences.getString(getString(R.string.param_wallet_name), ""));
+                                        attributeValueList.add(preferences.getString(getString(R.string.param_oneid_wallet_name), ""));
                                     else
                                         attributeValueList.add("");
                                 }
                             }
                         }
+
+
                     }
                     catch (Exception e)
                     {
@@ -244,8 +250,6 @@ public class CreateProofOfferActivity extends AppCompatActivity {
                     }
 
                     adapter.notifyDataSetChanged();
-                    if(attributeNameList.size() > 0)
-                        textNoData.setVisibility(View.GONE);
                 }
                 catch (JSONException e)
                 {
@@ -267,13 +271,15 @@ public class CreateProofOfferActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences(AppDelegate.SharedPreferencesTag, Context.MODE_PRIVATE);
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("token", preferences.getString(getString(R.string.param_token), ""));
+            jsonObject.put("token", preferences.getString(getString(R.string.param_oneid_token), ""));
             jsonObject.put("sender_did", senderDid);
             jsonObject.put("message_id", messageId);
 
-            for(int i=0;i< attributeValueList.size(); i++){
-                String value = attributeValueList.get(i);
-                attributeValueList.set(i, value);
+            for(int i=0;i< attributeNameList.size(); i++){
+                View view= recyclerView.getChildAt(i);
+                EditText editText = view.findViewById(R.id.input_value);
+                String string = editText.getText().toString();
+                Log.e(i + " " + " value", string + "");
             }
 
             JSONObject jsonProofObject = new JSONObject(data);
